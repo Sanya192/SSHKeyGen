@@ -1,0 +1,8 @@
+{
+  "profiles": {
+    "SSHKeyGen": {
+      "commandName": "Project",
+      "commandLineArgs": "militaryAlphabet.txt outputDirDifferent"
+    }
+  }
+}

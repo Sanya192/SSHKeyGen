@@ -6,9 +6,21 @@ namespace SSHKeyGen
     {
         static void Main(string[] args)
         {
-            var keygen = new MultipleKeyGen(File.ReadAllLines("militaryAlphabet.txt"));
-             keygen.ExportKeys();
-            Console.WriteLine("GG");
+            if (args.Length == 2)
+            {
+                // Elegant or not... Of course not but lol
+                var keygen = new MultipleKeyGen(File.ReadAllLines(args[0]));
+                keygen.outputDir = args[1];
+                keygen.ExportKeys();
+                Console.WriteLine("GG");
+            }
+            else
+            {
+                var keygen = new MultipleKeyGen(File.ReadAllLines("militaryAlphabet.txt"));
+                keygen.ExportKeys();
+                Console.WriteLine("GG");
+            }
+           
         }
     }
 
@@ -17,7 +29,7 @@ namespace SSHKeyGen
         List<string> keyNames;
         Dictionary<string, SSHKeyGenerator> keyGens;
         const int KeySize = 4096;
-        static string outputDir = "GenKeys";
+        public  string outputDir = "GenKeys";
 
         public MultipleKeyGen(IEnumerable<string> keyNames)
         {
